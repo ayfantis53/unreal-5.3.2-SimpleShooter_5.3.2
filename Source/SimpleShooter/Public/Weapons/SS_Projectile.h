@@ -77,7 +77,7 @@ private:
 	//// PATHS TO MESH COMPONENTS ////
 
 	/// @brief path to our static mesh for Constructor helpers.
-	FString projectile_mesh_path_{ "StaticMesh'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/SM_GrenadeSphere.SM_GrenadeSphere'" };
+	FString projectile_mesh_path_{ "StaticMesh'/Game/Weapons/FX/Meshes/SM_GrenadeSphere.SM_GrenadeSphere'" };
 
 	/* ---------------------- EFFECTS ----------------------- */
 
@@ -98,13 +98,13 @@ private:
 	//// PATHS TO FX ////
 
 	/// @brief Path to explosion sound cue.
-	FString sound_particles_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Sounds/A_Explosion_Cue.A_Explosion_Cue'" };
+	FString sound_particles_path_{ "SoundCue'/Game/Weapons/FX/Sounds/Launcher/A_Explosion_Cue.A_Explosion_Cue'" };
 
 	/// @brief Path to launcher impact sound cue.
-	FString hit_particles_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Particles/P_Launcher_IH.P_Launcher_IH'" };
+	FString hit_particles_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_Launcher_IH.P_Launcher_IH'" };
 
 	/// @brief Path to launcher projectile sound cue.
-	FString trail_particles_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Particles/P_Launcher_proj.P_Launcher_proj'" };
+	FString trail_particles_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_Launcher_proj.P_Launcher_proj'" };
 
 	/* --------------------- PROPERTIES --------------------- */
 

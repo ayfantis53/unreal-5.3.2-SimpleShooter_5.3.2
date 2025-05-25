@@ -37,17 +37,17 @@ private:
 	//// PATHS TO MESH COMPONENTS ////
 
 	/// @brief path to shotgun's skeletal mesh in Content folder.
-	FString shotgun_skeleton_path_{ "SkeletalMesh'/Game/AssetPacks/ShooterGame/Weapons/3ShotGun/SK_Shotgun.SK_Shotgun'" };
+	FString shotgun_skeleton_path_{ "SkeletalMesh'/Game/Weapons/SkeletalMeshes/SK_Shotgun.SK_Shotgun'" };
 
 	/* ---------------------- EFFECTS ----------------------- */
 
 	//// PATHS TO SOUND FX ////
 
 	/// @brief path to shotgun's muzzle sound cue file in Content folder.
-	FString muzzle_sound_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/4Sniper/FX/Sounds/A_Sniper_Cue.A_Sniper_Cue'" };
+	FString muzzle_sound_path_{ "SoundCue'/Game/Weapons/FX/Sounds/Sniper/A_Sniper_Cue.A_Sniper_Cue'" };
 
 	/// @brief path to shotgun's bullet impact sound cue file in Content folder.
-	FString impact_sound_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Sounds/A_Rifle_Impact_Cue.A_Rifle_Impact_Cue'" };
+	FString impact_sound_path_{ "SoundCue'/Game/Weapons/FX/Sounds/Rifle/A_Rifle_Impact_Cue.A_Rifle_Impact_Cue'" };
 
 	//// PATHS TO PARTICLE FX ////	
 	

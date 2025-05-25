@@ -40,7 +40,7 @@ private:
 	USoundBase* battle_cry_;
 
 	/// @brief FX of a sound played for when Enemy spots player.
-	FString battle_cry_path_{ "SoundCue'/Game/AssetPacks/GameDevTV/VoiceOvers/A_EnemySpeak_Cue.A_EnemySpeak_Cue'" };
+	FString battle_cry_path_{ "SoundCue'/Game/AssetPacks/ParagonWraith/FX/VoiceOvers/A_EnemySpeak_Cue.A_EnemySpeak_Cue'" };
 
 	/// @brief Control to make sure many enemies do not speak all at once.
 	bool speak_{ true };

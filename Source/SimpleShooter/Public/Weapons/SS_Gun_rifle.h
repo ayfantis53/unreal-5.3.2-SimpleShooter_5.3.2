@@ -37,27 +37,27 @@ private:
 	//// PATHS TO MESH COMPONENTS ////
 
 	/// @brief path to rifle's skeletal mesh in Content folder.
-	FString rifle_skeleton_path_{ "SkeletalMesh'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/Rifle.Rifle'" };
+	FString rifle_skeleton_path_{ "SkeletalMesh'/Game/Weapons/SkeletalMeshes/SK_Rifle.SK_Rifle'" };
 
 	/* ---------------------- EFFECTS ----------------------- */
 
 	//// PATHS TO SOUND FX ////
 
 	/// @brief path to rifle's muzzle sound cue file in Content folder.
-	FString muzzle_sound_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Sounds/A_RifleShot_Cue.A_RifleShot_Cue'" };
+	FString muzzle_sound_path_{ "SoundCue'/Game/Weapons/FX/Sounds/Rifle/A_RifleShot_Cue.A_RifleShot_Cue'" };
 
 	/// @brief path to rifle's impact sound cue file in Content folder.
-	FString impact_sound_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Sounds/A_Rifle_Impact_Cue.A_Rifle_Impact_Cue'" };
+	FString impact_sound_path_{ "SoundCue'/Game/Weapons/FX/Sounds/Rifle/A_Rifle_Impact_Cue.A_Rifle_Impact_Cue'" };
 
 	//// PATHS TO PARTICLE FX ////
 
 	/// @brief path to rifle's flash particles fx file in Content folder.
-	FString muzzle_flash_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Particles/P_AssaultRifle_MF.P_AssaultRifle_MF'" };
+	FString muzzle_flash_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_AssaultRifle_MF.P_AssaultRifle_MF'" };
 
 	/// @brief path to rifle's trail particles fx file in Content folder.
-	FString bullet_impact_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Particles/P_AssaultRifle_IH.P_AssaultRifle_IH'" };
+	FString bullet_impact_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_AssaultRifle_IH.P_AssaultRifle_IH'" };
 
 	/// @brief path to rifle's impact particles fx file in Content folder.
-	//FString bullet_trail_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Particles/P_SmokeTrail.P_SmokeTrail'" };
-	FString bullet_trail_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/1Rifle/FX/Particles/P_AssaultRifle_Trail.P_AssaultRifle_Trail'" };
+	//FString bullet_trail_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_SmokeTrail.P_SmokeTrail'" };
+	FString bullet_trail_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_AssaultRifle_Trail.P_AssaultRifle_Trail'" };
 };

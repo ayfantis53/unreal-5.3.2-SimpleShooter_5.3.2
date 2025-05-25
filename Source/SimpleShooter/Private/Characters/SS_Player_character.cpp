@@ -71,7 +71,7 @@ auto ASS_Player_character::BeginPlay() -> void
 	}
 
 	// Give gun to character.
-	gun_ref_ = GetWorld()->SpawnActor<ASS_Gun_base>(ASS_Gun_sniper::StaticClass());
+	gun_ref_ = GetWorld()->SpawnActor<ASS_Gun_base>(ASS_Gun_rifle::StaticClass());
 	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
 	gun_ref_->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_socket"));
 	gun_ref_->SetOwner(this);

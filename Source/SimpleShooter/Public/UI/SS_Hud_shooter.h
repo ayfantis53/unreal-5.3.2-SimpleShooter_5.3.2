@@ -72,7 +72,7 @@ private:
 	//// CROSSHAIR PATHS ////
 	
 	/// @brief location of 2D image asset that provides visual information for cross hairs.
-	FString cross_hair_path_{ "Texture2D'/Game/AssetPacks/ShooterGame/HUD/Cross_Q_9.Cross_Q_9'" };
+	FString cross_hair_path_{ "Texture2D'/Game/Weapons/FX/Textures/T_HUD/Cross_Q_9.Cross_Q_9'" };
 
 	/* ----------------------- HEALTH ---------------------- */
 
@@ -93,8 +93,8 @@ private:
 	//// PATHS TO WIDGETS ////
 	
 	/// @brief path to health bar full texture.
-	const FString health_bar_full_path_{ "Texture2D'/Game/AssetPacks/ShooterGame/HUD/HeathBar_Full.HeathBar_Full'" };
+	const FString health_bar_full_path_{ "Texture2D'/Game/Weapons/FX/Textures/T_HUD/HeathBar_Full.HeathBar_Full'" };
 
 	/// @brief path to health icon full texture.
-	const FString health_icon_path_{ "Texture2D'/Game/AssetPacks/ShooterGame/HUD/HUD_Health_Icon.HUD_Health_Icon'" };
+	const FString health_icon_path_{ "Texture2D'/Game/Weapons/FX/Textures/T_HUD/HUD_Health_Icon.HUD_Health_Icon'" };
 };
