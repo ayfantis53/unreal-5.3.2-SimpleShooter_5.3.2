@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "AI/SS_Bt_service_seen_player.h"
 #include "Characters/SS_Shooter_character.h"
@@ -14,6 +22,7 @@ USS_Bt_service_seen_player::USS_Bt_service_seen_player()
 {
 	NodeName = TEXT("Update Player Location If Seen");
 
+	// Set sound we use for enemy voice.
 	static ConstructorHelpers::FObjectFinder<USoundBase> battle_cry_container(*battle_cry_path_);
 	if (battle_cry_container.Succeeded())
 	{
@@ -28,7 +37,7 @@ auto USS_Bt_service_seen_player::TickNode(UBehaviorTreeComponent& owner_comp, ui
 	APawn* player_pawn					   = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	ASS_Shooter_character* enemy_character = Cast<ASS_Shooter_character>(owner_comp.GetAIOwner()->GetPawn());
 
-	// Make sure nothing is null so game doesnt crash.
+	// Make sure player and enemy exist.
 	if (!player_pawn || !enemy_character || !owner_comp.GetAIOwner())
 	{
 		return;

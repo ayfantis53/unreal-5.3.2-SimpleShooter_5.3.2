@@ -28,6 +28,7 @@
 * Unreal Editor
     - Enable Shader Model 6 (SM6)
         > Project Settings -> Platforms -> Linux -> Targeted RHIs
+    - Animation Blueprints have to be found as classes and their paths have to have a "_C" at the end of the reference.
 
 
 -----------------------------------------------------------------------------------------

@@ -1,7 +1,17 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
+#include "Particles/ParticleSystem.h"
+
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "SS_Gun_base.generated.h"
@@ -48,11 +58,11 @@ protected:
 
 	//// POINTERS TO COMPONENTS ////
 
-	/// @brief root to place our weapon.
+	/// @brief Base class for all Components.
 	UPROPERTY()
 	USceneComponent* root_comp_;
 
-	/// @brief skeletal mesh of our gun meant to be sent to children.
+	/// @brief Renders a a 3D model with a skeleton and animation capabilities for guns.
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* mesh_comp_;
 
@@ -60,15 +70,15 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	USceneComponent* projectile_spawn_point_;
 
-	/// @brief FX for muzzle fire will be unique for each fun.
+	/// @brief Complete particle effect, with multiple emitters, allowing for muzzle flash effects.
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystem* muzzle_flash_;
 
-	/// @brief Stores the particle system that way we can cancel it for the infinite emitter.
+	/// @brief Container for muzzle flash effect, allowing control (infinite emitter) and visual effects.
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystemComponent* muzzle_flash_comp_;
 
-	/// @brief FX of when line trace hits an object (actor).
+	/// @brief Complete particle effect, with multiple emitters, allowing for bullet impact effects.
 	UPROPERTY(VisibleAnywhere)
 	UParticleSystem* bullet_impact_;
 
@@ -76,17 +86,17 @@ protected:
 
 	//// SOUND ////
 
-	/// @brief FX of a sound played for when gun shoots.
+	/// @brief Base class that represents gunfire sound, that can be played within the engine.
 	UPROPERTY()
 	USoundBase* muzzle_sound_;
 
-	/// @brief FX of a sound played for when bullet hits another actor.
+	/// @brief Base class that represents bullet impact sound, that can be played within the engine.
 	UPROPERTY()
 	USoundBase* impact_sound_;
 
 	//// PARTICLE EFFECTS ////
 
-	/// @brief FX of bullet path leaving gun.
+	/// @brief Complete particle effect, with multiple emitters, allowing for bullet trail effects.
 	UPROPERTY()
 	UParticleSystem* bullet_trail_;
 
@@ -100,45 +110,45 @@ protected:
 	/// @brief default damage of weapon.
 	float damage_{ 40.f };
 
-	/// @brief how far a bullet will do damage.
+	/// @brief default range for bullet or projectile.
 	float max_range_{ 5000.f };
 
 	/// @brief default zoom of weapon.
 	float camera_zoomed_fov_{ 60.f };
 
 	/// @brief boolean to tell us if this class is a launcher or gun class.
-	bool b_is_projectile_class_{ false };
+	bool b_is_projectile_class_{};
 
 	//// AUTOMATIC OR SEMI FIRE ////
 
 	/// @brief will this gun fire automatically or semi-automatic.
-	bool b_automatic_{ false };
+	bool b_automatic_{};
 
-	/// @brief 
+	/// @brief boolean to allow us to fire weapon (ensure we have delay between gun shots).
 	bool b_automatic_replay_{ true };
 
 	/// @brief how fast our gun will shoot, the smaller the numer the faster the fire rate.
 	float automatic_fire_rate_{ 0.1f };
 
 private:
-	/// @brief 
-	/// @return 
+	/// @brief Find out which character is using the gun.
+	/// @return AController* of character using the weapon.
 	auto get_owner_controller() const -> AController*;
 
-	/// @brief 
-	/// @param hit
-	/// @param shot_direction
-	/// @return 
+	/// @brief Line trace by single to let game know whether to play FX of gunfire impact.
+	/// @param hit            Location of bullet impact for our line trace.
+	/// @param shot_direction Direction of shooting for our bullet line trace.
+	/// @return bool if we hit anything or not.
 	auto gun_line_trace(FHitResult& hit, FVector shot_direction) -> bool;
 
-	/// @brief 
-	/// @param hit
-	/// @param shot_direction
+	/// @brief Animate the weapon's particle and sound FX.
+	/// @param hit            Location of bullet impact for our impact FX.
+	/// @param shot_direction Direction of shooting for our bullet impact FX.
 	auto play_fire_effects(FHitResult hit, FVector shot_direction) -> void;
 
-	/// @brief 
+	/// @brief Character shoots a gun that does a bullet line trac.
 	auto fire_weapon() -> void;
 
-	/// @brief 
+	/// @brief Character shoots a gun that spawn a grenade.
 	auto fire_projectile_weapon() -> void;
 };

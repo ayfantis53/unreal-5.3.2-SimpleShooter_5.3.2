@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -43,31 +51,31 @@ private:
 
 	/* ---------------- ANIMATION VARIABLES ----------------- */
 
-	//// MOVEMENT ////
-
 	//// TURN IN PLACE VARIABLES  ////
 
-	/// @brief
+	/// @brief The amount of sideways rotation character does.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	float tip_character_yaw_;
 
-	/// @brief
+	/// @brief The amount of the last frame of sideways rotation character does. 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	float tip_character_yaw_last_frame_;
 
-	/// @brief
+	/// @brief Offset of character sideways rotation from original point.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	float root_yaw_offset_;
 
-	/// @brief
+	/// @brief Is character turning at zero acceleration.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	bool b_turning_in_place_;
 
-	/// @brief
+	//// LEANING WHILE RUNNING ////
+
+	/// @brief Is it a full body action?
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	bool full_body_;
 
-	/// @brief
+	/// @brief Amount of forward or backward rotation character is experiencing.
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "TurnInPlace", meta = (AllowPrivateAccess = "true"))
 	float pitch_{ 0.f };
 
@@ -107,17 +115,15 @@ private:
 
 	//// ACTIONS ////
 
-	/// @brief
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	/// @brief Is character aiming weapon for aim pose.
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	bool b_aiming_;
 
-	/// @brief
+	/// @brief Is character jumping or falling off something?
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	bool b_is_in_air_;
 	
 	/// @brief Is players health zero.
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health", meta = (AllowPrivateAccess = "true"))
 	bool b_is_dead_;
-
-	/* ------------------- PATHS TO WIDGETS ------------------ */
 };

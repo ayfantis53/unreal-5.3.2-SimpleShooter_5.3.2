@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -26,7 +34,7 @@ public:
 	auto Tick(float delta_time) -> void override;
 
 	/// @brief tells us if this actor is dead.
-	/// @return true or false.
+	/// @return bool if player died.
 	auto b_is_dead() const -> bool;
 
 protected:
@@ -36,10 +44,14 @@ protected:
 private:
 	/* -------------------- BEHAVIOR TREE ------------------- */
 
+	//// POINTERS ////
+
 	/// @brief Blackboard Behavior Tree for our AI movement and actions.
 	UPROPERTY(VisibleAnywhere)
 	UBehaviorTree* ai_behavior_tree_;
 
+	//// PATHS ////
+	
 	/// @brief Path to Enemy Character AI Behavior Tree.
 	FString behavior_tree_path_{ "BehaviorTree'/Game/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/BT_Enemy_character_AI.BT_Enemy_character_AI'" };
 

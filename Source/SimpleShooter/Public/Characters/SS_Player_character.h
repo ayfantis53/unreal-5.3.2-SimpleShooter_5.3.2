@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -7,10 +15,10 @@
 #include "SS_Player_character.generated.h"
 
 
-class UInputAction;
-class UInputComponent;
+class  UInputAction;
+class  UInputComponent;
 struct FInputActionValue;
-class UInputMappingContext;
+class  UInputMappingContext;
 
 /**
  * 	Playable character for User (Shooter)
@@ -21,7 +29,8 @@ class SIMPLESHOOTER_API ASS_Player_character : public ASS_Shooter_character
 	GENERATED_BODY()
 	
 public:
-	/// @brief Sets default value for acceleration path to true.
+	/// @brief Sets default values for this character's properties..
+	/// @param ObjectInitializer controls how default values & settings are applied to new objects when creating subobjects.
 	ASS_Player_character(const FObjectInitializer& ObjectInitializer);
 
 	/// @brief Called every frame.
@@ -29,7 +38,7 @@ public:
 	auto Tick(float delta_time) -> void override;
 
 	/// @brief Called to bind functionality to input.
-	/// @param Allows a Pawn to set up custom input bindings.
+	/// @param player_input_component Allows a Pawn to set up custom input bindings.
 	auto SetupPlayerInputComponent(UInputComponent* player_input_component) -> void override;
 
 	/// @brief Percent of full health for progress bar visual.
@@ -47,6 +56,7 @@ private:
 	auto set_up_input() -> void;
 
 	/// @brief Player camera zooms in.
+	/// @param value struct holding input action boolean values.
 	auto aiming_button_pressed(const FInputActionValue& value) -> void;
 
 	/// @brief Player camera reverts to original location.
@@ -57,14 +67,17 @@ private:
 	auto camera_interp_zoom(float delta_time) -> void;
 
 	/// @brief lets character look up and turn sideways.
-	/// @param value struct holding input action asis or boolean values.
+	/// @param value struct holding input action axis values.
 	auto look(const FInputActionValue& value) -> void;
 
 	/// @brief moves character left right forward backward.
-	/// @param value struct holding input action asis or boolean values.
+	/// @param value struct holding input action axis values.
 	auto move(const FInputActionValue& value) -> void;
 
 	/* --------------------- REFERENCES --------------------- */
+
+	/// @brief Reference to player controller.
+	class ASS_Hud_shooter* hud_ref_;
 
 	/// @brief Reference to player controller.
 	class ASS_Player_controller* player_controller_ref_;

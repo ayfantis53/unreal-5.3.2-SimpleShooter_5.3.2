@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -17,10 +25,13 @@ public:
 	SLATE_END_ARGS()
 
 	/// @brief struct that contains the parameters passed to the widget during its construction.
+	/// @param in_args struct that contains the parameters passed to the widget during its construction.
 	auto Construct(const FArguments& in_args) -> void;
 
 private:
 	/* ------------------- TEXT PROPERTIES ------------------ */
+
+	//// TEXT REFERENCES ////
 
 	/// @brief Text pointer for player losing.
 	TSharedPtr<STextBlock> lose_text_;
@@ -28,12 +39,16 @@ private:
 	/// @brief Text pointer level will restart.
 	TSharedPtr<STextBlock> restart_text_;
 
+	//// TEXT ////
+
 	/// @brief Value for text lost game text.
 	FString lose_game_text_{ "You LOST!" };
 
 	/// @brief Value for text level restart text.
 	FString level_restart_text_{ "Level will restart in 5 seconds..." };
 
+	//// STYLING ////
+	
 	/// @brief Shadow offset.
 	FVector2D text_shadow_offset_{ FVector2D(1.f, 1.f) };
 

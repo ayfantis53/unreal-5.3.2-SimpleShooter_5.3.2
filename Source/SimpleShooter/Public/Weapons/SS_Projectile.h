@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -26,7 +34,7 @@ public:
 	ASS_Projectile();
 
 	/// @brief Called every frame
-	/// @param delta_time
+	/// @param delta_time Time taken between the frames of the gameplay can differ.
 	auto Tick(float delta_time) -> void override;
 
 protected:
@@ -36,14 +44,18 @@ protected:
 	/// @brief Use Constructor helpers to populate all properties.
 	auto setup_paths() -> void;
 
-	/// @brief
-	/// @param hit_comp
-	/// @param other_actor
-	/// @param other_comp
-	/// @param normal_impulse
-	/// @param hit
+	/// @brief An event that's triggered when a component (part of an actor) experiences a collision.
+	/// @param hit_comp       The primitive component that was hit.
+	/// @param other_actor    The actor that caused the hit.
+	/// @param other_comp     The primitive component of the actor that caused the hit.
+	/// @param normal_impulse A vector representing the impulse applied to the hit component.
+	/// @param hit            Struct with info about collision, ie: point o/impact and normal vector o/impact.
 	UFUNCTION()
-	void OnHit(UPrimitiveComponent* hit_comp, AActor* other_actor, UPrimitiveComponent* other_comp, FVector normal_impulse, const FHitResult& hit);
+	void OnHit(UPrimitiveComponent* hit_comp, 
+			   AActor*              other_actor, 
+			   UPrimitiveComponent* other_comp, 
+			   FVector              normal_impulse, 
+			   const FHitResult&    hit);
 
 private:
 	/* --------------------- COMPONENTS --------------------- */
@@ -54,11 +66,11 @@ private:
 	UPROPERTY()
 	USceneComponent* root_comp_;
 
-	/// @brief Clear sphere were going to use to attach our trailing particles to.
+	/// @brief Clear sphere where we are going to use to attach our trailing particles to.
 	UPROPERTY()
 	UStaticMeshComponent* projectile_mesh_;
 
-	/// @brief
+	/// @brief Component specifically designed for simulating movement of grenade.
 	UPROPERTY()
 	UProjectileMovementComponent* proj_move_comp_;
 
@@ -71,38 +83,38 @@ private:
 
 	//// POINTERS TO FX ////
 
-	/// @brief
+	/// @brief Base class that represents hit sound to be played.
 	UPROPERTY()
 	USoundBase* hit_sound_;
 
-	/// @brief
+	/// @brief Complete projectile impact particle effect with multiple ParticleEmitters.
 	UPROPERTY()
 	UParticleSystem* hit_particles_;
 
-	/// @brief
+	/// @brief component that renders projectile trail particle effects.
 	UPROPERTY()
 	UParticleSystemComponent* trail_particles_;
 
 	//// PATHS TO FX ////
 
-	/// @brief
+	/// @brief Path to explosion sound cue.
 	FString sound_particles_path_{ "SoundCue'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Sounds/A_Explosion_Cue.A_Explosion_Cue'" };
 
-	/// @brief
+	/// @brief Path to launcher impact sound cue.
 	FString hit_particles_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Particles/P_Launcher_IH.P_Launcher_IH'" };
 
-	/// @brief
+	/// @brief Path to launcher projectile sound cue.
 	FString trail_particles_path_{ "ParticleSystem'/Game/AssetPacks/ShooterGame/Weapons/2Launcher/FX/Particles/P_Launcher_proj.P_Launcher_proj'" };
 
 	/* --------------------- PROPERTIES --------------------- */
 
-	/// @brief
+	/// @brief Damage projectile explosion does by outer impulse.
 	float damage_{ 250.f };
 
-	/// @brief
+	/// @brief Damage projectile explosion does by inner impulse.
 	float max_damage_{ 500.f };
 
-	/// @brief
+	/// @brief Is the projectile an impulse damage type. Different than a point (bullet).
 	bool b_explosive_{ true };
 
 	//// SIZING ////

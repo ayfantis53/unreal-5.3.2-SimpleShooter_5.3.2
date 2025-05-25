@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "Weapons/SS_Projectile.h"
 #include "FX/SS_Camera_shake_launcher.h"
@@ -121,6 +129,7 @@ auto ASS_Projectile::OnHit(UPrimitiveComponent* hit_comp, AActor* other_actor, U
 		GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(USS_Camera_shake_launcher::StaticClass());
 	}
 
+	// Remove projectile from game.
 	Destroy();
 }
 

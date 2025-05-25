@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "UI/SS_Widget_health_bar.h"
 
@@ -23,12 +31,14 @@ auto SSS_Widget_health_bar::Construct(const FArguments& in_args) -> void
 											   health_icon_size,
 											   health_icon_green_);
 
+	calculate_center();
+
 	ChildSlot
 		[
 			// Populate the widget.
 			SNew(SCanvas)
 				+ SCanvas::Slot()
-				.Position(FVector2D(797.f, 10.f))
+				.Position(FVector2D((screen_center_.X), 10.f))
 				.Size(health_bar_size_)
 				[
 					// Progress Bar.
@@ -42,7 +52,7 @@ auto SSS_Widget_health_bar::Construct(const FArguments& in_args) -> void
 						.BorderPadding(FVector2D(1, 1))
 				]
 				+ SCanvas::Slot()
-				.Position(FVector2D(857.f, 50.f))
+				.Position(FVector2D((screen_center_.X)+ 60, 50.f))
 				.Size(health_icon_size)
 				[
 					// Health Icon.
@@ -52,6 +62,15 @@ auto SSS_Widget_health_bar::Construct(const FArguments& in_args) -> void
 				]
 		];
 		
+}
+
+auto SSS_Widget_health_bar::calculate_center() -> void
+{
+	// Get size of game viewport.
+	const FVector2D viewport_size = FVector2D(GEngine->GameViewport->Viewport->GetSizeXY());
+
+	// Get center of the screen.
+	screen_center_                = FVector2D((viewport_size.X / 2), (viewport_size.Y / 2));
 }
 END_SLATE_FUNCTION_BUILD_OPTIMIZATION
 

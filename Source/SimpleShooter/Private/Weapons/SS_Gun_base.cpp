@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "Weapons/SS_Gun_base.h"
 #include "Weapons/SS_Projectile.h"
@@ -19,9 +27,11 @@ ASS_Gun_base::ASS_Gun_base()
 	root_comp_ = CreateDefaultSubobject<USceneComponent>(TEXT("root_comp_"));
 	SetRootComponent(root_comp_);
 
+	// Mesh as root component.
 	mesh_comp_ = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("mesh_comp_"));
 	mesh_comp_->SetupAttachment(root_comp_);
 
+	// Projectile location so we know where to spawn grenades.
 	projectile_spawn_point_ = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	projectile_spawn_point_->SetupAttachment(mesh_comp_);
 }
@@ -49,13 +59,14 @@ auto ASS_Gun_base::get_owner_controller() const -> AController*
 
 auto ASS_Gun_base::gun_line_trace(FHitResult& hit, FVector shot_direction) -> bool
 {
+	// Make sure weapon has someone using it.
 	AController* owner_controller = Cast<AController>(get_owner_controller());
-
 	if (owner_controller == nullptr)
 	{
 		return false;
 	}
 
+	// Face where we will be shooting in correct direction.
 	FVector  location{};
 	FRotator rotation{};
 	owner_controller->GetPlayerViewPoint(location, rotation);
@@ -68,12 +79,13 @@ auto ASS_Gun_base::gun_line_trace(FHitResult& hit, FVector shot_direction) -> bo
 	params.AddIgnoredActor(this);
 	params.AddIgnoredActor(GetOwner());
 
+	// Send trace (bullet) out.
 	return GetWorld()->LineTraceSingleByChannel(hit, location, end, ECollisionChannel::ECC_GameTraceChannel1, params);
 }
 
 auto ASS_Gun_base::play_fire_effects(FHitResult hit, FVector shot_direction) -> void
 {
-	// FX for Bullet leaving muzzle of gun.
+	// FX for muzzle.
 	if (muzzle_sound_)
 	{
 		UGameplayStatics::SpawnSoundAttached(muzzle_sound_, mesh_comp_, TEXT("MuzzleFlashSocket"));
@@ -84,6 +96,7 @@ auto ASS_Gun_base::play_fire_effects(FHitResult hit, FVector shot_direction) -> 
 		b_automatic_replay_ = false;
 	}
 
+	// FX for impact .
 	if (bullet_impact_)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), bullet_impact_, hit.Location, shot_direction.Rotation());
@@ -93,7 +106,7 @@ auto ASS_Gun_base::play_fire_effects(FHitResult hit, FVector shot_direction) -> 
 		UGameplayStatics::SpawnSoundAttached(impact_sound_, mesh_comp_, TEXT("MuzzleFlashSocket"));
 	}
 
-	// FX for Trail Bullet.
+	// FX for Bullet trail.
 	if (bullet_trail_)
 	{
 		UParticleSystemComponent* beam = UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), 
@@ -136,7 +149,6 @@ auto ASS_Gun_base::fire_weapon() -> void
 
 		// damage_ what gets shot code.
 		AActor* hit_actor = hit.GetActor();
-
 		if (hit_actor)
 		{
 			FPointDamageEvent damage_event(damage_, hit, shot_direction, nullptr);
@@ -173,21 +185,23 @@ auto ASS_Gun_base::fire_projectile_weapon() -> void
 			}
 		}
 
+		// Spawn location.
 		FVector  location 			   = projectile_spawn_point_->GetComponentLocation();
 		FRotator rotation 			   = projectile_spawn_point_->GetComponentRotation();
 
 		ASS_Projectile* projectile_ref = GetWorld()->SpawnActor<ASS_Projectile>(location, rotation);
-
 		projectile_ref->SetOwner(this);
 	}
 }
 
 auto ASS_Gun_base::pull_trigger() -> void
 {
+	// Normal gun with bullet (line trace attacks).
 	if (!b_is_projectile_class_)
 	{
 		fire_weapon();
 	}
+	// Launcher weapon (grenades).
 	else
 	{
 		fire_projectile_weapon();

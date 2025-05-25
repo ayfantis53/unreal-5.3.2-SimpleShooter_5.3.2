@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "AI/SS_Bt_service_player_location.h"
 
@@ -17,12 +25,14 @@ auto USS_Bt_service_player_location::TickNode(UBehaviorTreeComponent& owner_comp
 {
 	Super::TickNode(owner_comp, node_memory, delta_seconds);
 
+	// Make sure Player exists.
 	APawn* player_pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	if (player_pawn == nullptr)
 	{
 		return;
 	}
 
+	// Set Player's location so enemy AI knows where to move to, to attack.
 	owner_comp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), player_pawn->GetActorLocation());
 }
 

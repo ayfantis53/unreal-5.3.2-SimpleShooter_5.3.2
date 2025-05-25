@@ -1,8 +1,17 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "Characters/SS_Player_character.h"
 #include "Characters/SS_Player_controller.h"
 #include "UI/SS_Widget_health_bar.h"
+#include "UI/SS_Hud_shooter.h"
 
 // Unreal includes
 #include "InputActionValue.h"
@@ -17,7 +26,7 @@
 
 ASS_Player_character::ASS_Player_character(const FObjectInitializer& ObjectInitializer)
 {
-	// get camera setup correctly.
+	// get spring arm setup correctly.
 	spring_arm_ = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	spring_arm_->SetupAttachment(RootComponent);
 	spring_arm_->TargetArmLength = 160.f;
@@ -27,9 +36,11 @@ ASS_Player_character::ASS_Player_character(const FObjectInitializer& ObjectIniti
 	spring_arm_->bUsePawnControlRotation = true;
 	spring_arm_->SocketOffset = FVector(0.f, 50.f, 70.f);
 
+	// get camera setup correctly.
 	camera_ = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	camera_->SetupAttachment(spring_arm_);
 
+	// setup inputs and meshes.
 	set_up_input();
 	setup_character();
 }
@@ -38,9 +49,11 @@ auto ASS_Player_character::BeginPlay() -> void
 {
 	Super::BeginPlay();
 
-	player_controller_ref_ = Cast<ASS_Player_controller>(GetController());
+	// Get reference to player hud.
+	hud_ref_               = Cast<ASS_Hud_shooter>(GetWorld()->GetFirstPlayerController()->GetHUD());
 
 	// Add input mapping context.
+	player_controller_ref_ = Cast<ASS_Player_controller>(GetController());
 	if (player_controller_ref_)
 	{
 		// store the enhanced input subsystem for getting which key is triggered.
@@ -57,7 +70,7 @@ auto ASS_Player_character::BeginPlay() -> void
 		camera_current_fov_ = camera_default_fov_;
 	}
 
-	// Setup giving gun to character.
+	// Give gun to character.
 	gun_ref_ = GetWorld()->SpawnActor<ASS_Gun_base>(ASS_Gun_sniper::StaticClass());
 	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
 	gun_ref_->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_socket"));
@@ -85,9 +98,9 @@ auto ASS_Player_character::Tick(float delta_time) -> void
 
 auto ASS_Player_character::health_bar_percent() const -> void
 {
-	if (player_controller_ref_->get_health_widget())
+	if (hud_ref_->get_health_widget())
 	{
-		player_controller_ref_->get_health_widget()->progress_bar_ref->SetPercent(health_ / max_health_);
+		hud_ref_->get_health_widget()->progress_bar_ref->SetPercent(health_ / max_health_);
 	}
 }
 
@@ -103,11 +116,10 @@ auto ASS_Player_character::setup_character() -> void
 		character_mesh_->SetRelativeRotation(FRotator(0.f, -90.f, 0.f));
 	}
 
-	// Set Anim Instance to our skeletal mesh path.
-	static ConstructorHelpers::FObjectFinder<UAnimBlueprint> anim_class_container(*anim_bp_file_path_);
-	if (anim_class_container.Succeeded())
+	static ConstructorHelpers::FObjectFinder<UClass> anim_class_container(*anim_bp_file_path_);
+	if (anim_class_container.Succeeded() && character_mesh_)
 	{
-		character_mesh_->SetAnimInstanceClass(anim_class_container.Object->GeneratedClass);
+		character_mesh_->SetAnimInstanceClass(anim_class_container.Object);
 	}
 
 	// Set Hip Fire Montage for our skeletal mesh.
@@ -119,7 +131,7 @@ auto ASS_Player_character::setup_character() -> void
 }
 
 // Called to bind functionality to input.
-void ASS_Player_character::SetupPlayerInputComponent(UInputComponent* player_input_component)
+auto ASS_Player_character::SetupPlayerInputComponent(UInputComponent* player_input_component) -> void
 {
 	Super::SetupPlayerInputComponent(player_input_component);
 
@@ -217,25 +229,28 @@ auto ASS_Player_character::camera_interp_zoom(float delta_time) -> void
 
 auto ASS_Player_character::look(const FInputActionValue& value) -> void
 {
+	// Get players input from keys.
 	const FVector2D look_axis_vector = value.Get<FVector2D>();
 
-	// look up and down.
+	// Adds a pitch input to the controller's control rotation
+	// To look up and down.
 	AddControllerPitchInput(look_axis_vector.Y);
 
-	// Turn sideways.
+	// Adds input to player's camera rotation, for turning left and right.
 	AddControllerYawInput(look_axis_vector.X);
 
 }
 
 auto ASS_Player_character::move(const FInputActionValue& value) -> void
 {
+	// Get players input from keys.
 	const FVector2D movement_vector = value.Get<FVector2D>();
 
-	// take care of moving forward.
+	// Multiplies forward vector by axis value.
 	const FVector forward = GetActorForwardVector();
 	AddMovementInput(forward, movement_vector.Y);
 
-	// take care of moving to the right.
+	// Multiplies right vector by axis value.
 	const FVector right = GetActorRightVector();
 	AddMovementInput(right, movement_vector.X);
 

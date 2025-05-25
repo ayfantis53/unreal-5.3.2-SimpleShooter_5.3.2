@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -17,16 +25,23 @@ public:
 	SLATE_END_ARGS()
 
 	/// @brief struct that contains the parameters passed to the widget during its construction.
+	/// @param in_args struct that contains the parameters passed to the widget during its construction.
 	auto Construct(const FArguments& in_args) -> void;
 
 private:
 	/* ------------------- TEXT PROPERTIES ------------------ */
 
+	//// TEXT REFERENCES ////
+	
 	/// @brief Text for countdown display at start of game.
 	TSharedPtr<STextBlock> win_text_;
 
+	//// TEXT ////
+
 	/// @brief Value for Start Game Text.
 	FString win_game_text_{ "You WIN!!!" };
+
+	//// STYLING ////
 
 	/// @brief Size to set the win text.
 	int font_size_{ 70 };

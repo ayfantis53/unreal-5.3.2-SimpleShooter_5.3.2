@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 
 #include "Characters/SS_Shooter_character.h"
 #include "Characters/SS_Player_controller.h"
@@ -41,13 +49,12 @@ auto ASS_Shooter_character::TakeDamage(float damage_amount, FDamageEvent const& 
 {
 	float damage_to_apply = Super::TakeDamage(damage_amount, damage_event, event_instigator, damage_causer);
 
+	// Handle character health reaching zero.
 	if (health_ - damage_to_apply <= 0.f)
 	{
-		// Character Death.
 		health_     = 0.f;
 		b_is_dead_  = true;
 		b_recharge_ = false;
-
 		stop_shoot();
 	}
 	else
@@ -62,8 +69,9 @@ auto ASS_Shooter_character::TakeDamage(float damage_amount, FDamageEvent const& 
 		health_ -= damage_to_apply;
 	}
 
-	// What to do when character dies.
-	if (b_is_dead_) {
+	// Handle character death.
+	if (b_is_dead_) 
+	{
 		ASS_Game_mode_kill_em_all* game_mode = GetWorld()->GetAuthGameMode<ASS_Game_mode_kill_em_all>();
 		if (game_mode != nullptr)
 		{
@@ -74,10 +82,11 @@ auto ASS_Shooter_character::TakeDamage(float damage_amount, FDamageEvent const& 
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-		// Enemy knows character is dead and stops firing and being aggressive.
+		// Handle enemy behavior when character dies.
 		APawn* player_pawn = Cast <ASS_Shooter_character>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 		if (GetOwner() == player_pawn)
 		{
+			// For all enemies: stop firing and being aggressive.
 			for (ASS_Enemy_ai_controller* enemy_controller : TActorRange<ASS_Enemy_ai_controller>(GetWorld()))
 			{
 				if (enemy_controller)

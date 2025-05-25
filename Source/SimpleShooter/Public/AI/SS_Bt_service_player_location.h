@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -8,7 +16,7 @@
 
 
 /**
- * 
+ * 	Task for Enemy AI Blackboard to set location of player so enemies know where to attack to
  */
 UCLASS()
 class SIMPLESHOOTER_API USS_Bt_service_player_location : public UBTService_BlackboardBase

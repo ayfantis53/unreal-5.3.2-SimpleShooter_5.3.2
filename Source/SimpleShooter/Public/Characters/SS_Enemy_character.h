@@ -1,4 +1,12 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// *************************************************************************** //
+// ******************** Unreal Engine version 5.3.2 ************************** //
+// Simple Shooter ************************************************************ //
+//             																   //
+// Developed by Andrew Yfantis. 											   //
+// https://github.com/ayfantis53 											   //
+//             																   //
+// 2025 																	   //
+// *************************************************************************** //
 #pragma once
 
 // Unreal headers
@@ -16,7 +24,7 @@ class SIMPLESHOOTER_API ASS_Enemy_character : public ASS_Shooter_character
 	GENERATED_BODY()
 
 public:
-	/// @brief Sets default value for acceleration path to true.
+	/// @brief Sets default values for this character's properties.
 	/// @param ObjectInitializer controls how default values & settings are applied to new objects when creating subobjects.
 	ASS_Enemy_character(const FObjectInitializer& ObjectInitializer);
 
