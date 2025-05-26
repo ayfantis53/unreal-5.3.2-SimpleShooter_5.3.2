@@ -1,7 +1,7 @@
 // *************************************************************************** //
 // ******************** Unreal Engine version 5.3.2 ************************** //
 // Simple Shooter ************************************************************ //
-//             																   //
+// --------------															   //
 // Developed by Andrew Yfantis. 											   //
 // https://github.com/ayfantis53 											   //
 //             																   //
@@ -60,4 +60,9 @@ private:
 
 	/// @brief needed to set the widget text to Roboto.
 	inline const static FString roboto_path_{ "Slate/Fonts/Roboto-Bold.ttf" };
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Component.
+	friend class Lose_screen_widget_test;
 };

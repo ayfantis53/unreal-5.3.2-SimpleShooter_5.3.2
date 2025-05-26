@@ -1,7 +1,7 @@
 // *************************************************************************** //
 // ******************** Unreal Engine version 5.3.2 ************************** //
 // Simple Shooter ************************************************************ //
-//             																   //
+// --------------															   //
 // Developed by Andrew Yfantis. 											   //
 // https://github.com/ayfantis53 											   //
 //             																   //
@@ -106,10 +106,10 @@ auto ASS_Player_character::health_bar_percent() const -> void
 
 auto ASS_Player_character::setup_character() -> void
 {
+	// Set Mesh to our skeletal mesh path.
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> skeletal_mesh_path_container(*skeletal_mesh_path_);
 	if (skeletal_mesh_path_container.Succeeded())
 	{
-		// Set Mesh to our skeletal mesh path.
 		character_mesh_ = GetMesh();
 		character_mesh_->SetSkeletalMesh(skeletal_mesh_path_container.Object);
 		character_mesh_->SetRelativeLocation(FVector(0.f, 0.f, -88.f));

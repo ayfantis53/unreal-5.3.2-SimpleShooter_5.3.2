@@ -1,7 +1,7 @@
 // *************************************************************************** //
 // ******************** Unreal Engine version 5.3.2 ************************** //
 // Simple Shooter ************************************************************ //
-//             																   //
+// --------------															   //
 // Developed by Andrew Yfantis. 											   //
 // https://github.com/ayfantis53 											   //
 //             																   //
@@ -12,6 +12,7 @@
 // Unreal headers
 #include "CoreMinimal.h"
 #include "Widgets/SCompoundWidget.h"
+#include "Widgets/Layout/SConstraintCanvas.h"
 
 
 /**
@@ -36,18 +37,12 @@ public:
 	TSharedPtr<class SProgressBar> progress_bar_ref;
 
 private:
-	/// @brief Get center screen for widget.
-	auto calculate_center() -> void;
-
 	/* --------------------- HEALTH BAR --------------------- */
 
-	//// HEALTH BAR FULL ////
+	//// BAR FULL IMAGE ////
 
 	/// @brief Struct used to define how a health bar fill widget should be drawn.
 	FSlateBrush health_bar_brush_;
-
-	/// @brief Size of Health Bar Image to be displayed on screen.
-	FVector2D health_bar_size_{ FVector2D(1300.f, 200.f) };
 	
 	/// @brief Color of the full health bar.
 	FLinearColor health_bar_tint_green_{ FLinearColor(0.f, 1.f, 0.147f, 1.f) };
@@ -55,7 +50,7 @@ private:
 	/// @brief full percent of players health default.
 	float percent_full_{ 100.f };
 
-	//// HEALTH BAR EMPTY ////
+	//// BAR EMPTY IMAGE ////
 
 	/// @brief Struct used to define how a health bar empty widget should be drawn.
 	FSlateBrush health_bar_empty_brush_;
@@ -66,19 +61,34 @@ private:
 	/// @brief path to health icon full texture.
 	FLinearColor fill_color_green_{ FLinearColor(0.08091f, 1.f, 0.162268, 1.f)};
 
-	//// DIMENSIONS ////
+	//// BAR DIMENSIONS ////
 
 	/// @brief Screen center position.
-	FVector2D screen_center_{};
+	FAnchors top_center_{ FAnchors(0.5f, 0.1f, 0.5f, 0.1f) };
+
+	/// @brief Size of Health Bar Image to be displayed on screen.
+	FVector2D health_bar_size_{ FVector2D(1300.f, 200.f) };
 
 	/* ------------------------ ICON ------------------------ */
+
+	//// HEALTH ICON IMAGE ////
 
 	/// @brief Struct used to define how a health icon widget should be drawn.
 	FSlateBrush icon_brush_;
 
-	/// @brief Size of Health Icon Image to be displayed on screen.
-	FVector2D health_icon_size{ FVector2D(108.f, 108.f) };
-
 	/// @brief path to health icon full texture.
 	FLinearColor health_icon_green_{ FLinearColor(0.353f, 1.f, 0.f, 1.f) };
+
+	//// HEALTH ICON DIMENSIONS ////
+
+	/// @brief Size of Health Icon Image to be displayed on screen.
+	FVector2D health_icon_size_{ FVector2D(108.f, 108.f) };
+
+	/// @brief Offset of Health Icon Image to be displayed on screen.
+	FVector2D health_icon_offset_{ FVector2D(-520.f, -5.f) };
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Component.
+	friend class Health_bar_widget_test;
 };
