@@ -10,7 +10,7 @@
 
 #include "AI/SS_Bt_service_player_location.h"
 
-// Unreal includes
+// Unreal headers.
 #include "GameFramework/Pawn.h"
 #include "Kismet/GameplayStatics.h"
 #include "BehaviorTree/BlackboardComponent.h"

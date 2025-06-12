@@ -13,7 +13,7 @@
 #include "UI/SS_Widget_health_bar.h"
 #include "UI/SS_Hud_shooter.h"
 
-// Unreal includes
+// Unreal headers.
 #include "InputActionValue.h"
 #include "InputMappingContext.h"
 #include "EnhancedInputComponent.h"
@@ -29,15 +29,15 @@ ASS_Player_character::ASS_Player_character(const FObjectInitializer& ObjectIniti
 	// get spring arm setup correctly.
 	spring_arm_ = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	spring_arm_->SetupAttachment(RootComponent);
-	spring_arm_->TargetArmLength = 160.f;
-	spring_arm_->bEnableCameraLag = true;
+	spring_arm_->TargetArmLength          = 160.f;
+	spring_arm_->bEnableCameraLag         = true;
 	spring_arm_->bEnableCameraRotationLag = true;
-	spring_arm_->CameraRotationLagSpeed = 20.f;
-	spring_arm_->bUsePawnControlRotation = true;
-	spring_arm_->SocketOffset = FVector(0.f, 50.f, 70.f);
+	spring_arm_->CameraRotationLagSpeed   = 20.f;
+	spring_arm_->bUsePawnControlRotation  = true;
+	spring_arm_->SocketOffset             = FVector(0.f, 50.f, 70.f);
 
 	// get camera setup correctly.
-	camera_ = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	camera_     = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	camera_->SetupAttachment(spring_arm_);
 
 	// setup inputs and meshes.
@@ -71,7 +71,7 @@ auto ASS_Player_character::BeginPlay() -> void
 	}
 
 	// Give gun to character.
-	gun_ref_ = GetWorld()->SpawnActor<ASS_Gun_base>(ASS_Gun_rifle::StaticClass());
+	gun_ref_ = GetWorld()->SpawnActor<ASS_Gun_base>(ASS_Gun_shotgun::StaticClass());
 	GetMesh()->HideBoneByName(TEXT("weapon_r"), EPhysBodyOp::PBO_None);
 	gun_ref_->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("weapon_socket"));
 	gun_ref_->SetOwner(this);

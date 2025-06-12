@@ -10,7 +10,7 @@
 
 #include "Components/SS_Door_open_component.h"
 
-// Unreal includes
+// Unreal headers.
 #include "Engine/World.h"
 #include "Sound/SoundCue.h"
 #include "Engine/TriggerVolume.h"

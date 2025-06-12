@@ -10,7 +10,7 @@
 
 #include "GameModes/SS_Game_mode_kill_em_all.h"
 
-// Unreal includes
+// Unreal headers.
 #include "EngineUtils.h"
 #include "AI/SS_Enemy_ai_controller.h"
 #include "GameFramework/Controller.h"

@@ -19,7 +19,7 @@ public:
     /* --------------------- MEMBER VARS -------------------- */
 
     /// @brief Get lost game text.
-    /// @return FString.
+    /// @return float.
     static auto get_full_percent(TSharedPtr<class SSS_Widget_health_bar> widget_ref) -> float
     {
         return widget_ref->percent_full_;

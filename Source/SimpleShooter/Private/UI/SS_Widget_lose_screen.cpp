@@ -10,7 +10,7 @@
 
 #include "UI/SS_Widget_lose_screen.h"
 
-// Unreal includes
+// Unreal headers.
 #include "SlateBasics.h"
 #include "SlateOptMacros.h"
 #include "Widgets/Layout/SConstraintCanvas.h"

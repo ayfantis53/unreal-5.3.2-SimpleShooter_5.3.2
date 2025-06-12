@@ -124,4 +124,9 @@ private:
 
 	/// @brief Relative scale projectile mesh will be scaled to.
 	FVector trail_particle_scale_{ FVector(5.f) };	
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Actor.
+	friend class Projectile_test;
 };

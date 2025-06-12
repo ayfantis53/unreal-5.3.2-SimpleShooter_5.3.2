@@ -149,4 +149,10 @@ protected:
 
 	/// @brief montage of character firing different weapons path.
 	FString hip_fire_montage_path_{ "AnimMontage'/Game/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Animations/FireWeapon_Montage.FireWeapon_Montage'" };
+
+	/* ----------------------- TESTING ---------------------- */
+
+	/// @brief Test classes to unit test this Character.
+	friend class Enemy_character_test;
+	friend class Player_character_test;
 };

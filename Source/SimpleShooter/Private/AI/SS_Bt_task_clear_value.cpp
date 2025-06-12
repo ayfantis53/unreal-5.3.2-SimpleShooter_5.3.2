@@ -10,7 +10,7 @@
 
 #include "AI/SS_Bt_task_clear_value.h"
 
-// Unreal includes
+// Unreal headers.
 #include "BehaviorTree/BlackboardComponent.h"
 
 

@@ -26,6 +26,7 @@ public:
     }
 
     /// @brief Calls lose_game_widget set game over text function.
+    /// @return FString.
     static auto get_resart_game_text(TSharedPtr<class SSS_Widget_lose_screen> widget_ref) -> FString
     {
         return widget_ref->level_restart_text_;

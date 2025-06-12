@@ -15,10 +15,13 @@
 #include "SS_Player_character.generated.h"
 
 
+
 class  UInputAction;
 class  UInputComponent;
+class  ASS_Hud_shooter;
 struct FInputActionValue;
 class  UInputMappingContext;
+class  ASS_Player_controller;
 
 /**
  * 	Playable character for User (Shooter)
@@ -77,10 +80,10 @@ private:
 	/* --------------------- REFERENCES --------------------- */
 
 	/// @brief Reference to player controller.
-	class ASS_Hud_shooter* hud_ref_;
+	ASS_Hud_shooter* hud_ref_;
 
 	/// @brief Reference to player controller.
-	class ASS_Player_controller* player_controller_ref_;
+	ASS_Player_controller* player_controller_ref_;
 
 	/* --------------------- COMPONENTS --------------------- */
 
@@ -148,4 +151,7 @@ private:
 	FString shoot_action_path_{ "InputAction'/Game/EnhancedInputs/InputActions/IA_Shoot.IA_Shoot'" };
 
 	/* ----------------------- TESTING ---------------------- */
+
+	/// @brief Test classes to unit test this Character.
+	friend class Player_character_test;
 };

@@ -10,7 +10,7 @@
 
 #include "UI/SS_Widget_health_bar.h"
 
-// Unreal includes
+// Unreal headers.
 #include "SlateBasics.h"
 #include "SlateOptMacros.h"
 

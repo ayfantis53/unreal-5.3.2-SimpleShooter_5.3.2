@@ -59,4 +59,9 @@ private:
 
 	/// @brief path to sniper's impact particles fx file in Content folder.
 	FString bullet_impact_path_{ "ParticleSystem'/Game/AssetPacks/ParagonWraith/FX/Particles/Abilities/ScopedShot/FX/P_Wraith_Sniper_HitCharacter.P_Wraith_Sniper_HitCharacter'" };
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Actor.
+	friend class Gun_sniper_test;
 };

@@ -57,6 +57,6 @@ private:
 
 	/* ----------------------- TESTING ---------------------- */
 	
-	/// @brief Test classes to unit test this Component.
+	/// @brief Test classes to unit test this Widget.
 	friend class Win_screen_widget_test;
 };

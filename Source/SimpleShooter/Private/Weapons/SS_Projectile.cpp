@@ -11,7 +11,7 @@
 #include "Weapons/SS_Projectile.h"
 #include "FX/SS_Camera_shake_launcher.h"
 
-// Unreal includes
+// Unreal headers.
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/DamageType.h"
 #include "Particles/ParticleSystemComponent.h"

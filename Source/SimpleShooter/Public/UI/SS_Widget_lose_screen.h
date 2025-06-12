@@ -63,6 +63,6 @@ private:
 
 	/* ----------------------- TESTING ---------------------- */
 	
-	/// @brief Test classes to unit test this Component.
+	/// @brief Test classes to unit test this Widget.
 	friend class Lose_screen_widget_test;
 };

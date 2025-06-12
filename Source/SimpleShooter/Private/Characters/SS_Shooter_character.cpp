@@ -15,7 +15,7 @@
 #include "GameModes/SS_Game_mode_kill_em_all.h"
 #include "Components/SS_Character_movement_component.h"
 
-// Unreal includes
+// Unreal headers.
 #include "EngineUtils.h"
 #include "Kismet/GameplayStatics.h"
 #include "Components/CapsuleComponent.h"

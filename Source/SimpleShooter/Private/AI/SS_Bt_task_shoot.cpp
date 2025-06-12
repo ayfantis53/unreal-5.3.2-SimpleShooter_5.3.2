@@ -11,7 +11,7 @@
 #include "AI/SS_Bt_task_shoot.h"
 #include "Characters/SS_Shooter_character.h"
 
-// Unreal includes
+// Unreal headers.
 #include "AIController.h"
 
 

@@ -50,4 +50,9 @@ private:
 
 	/// @brief path to launcher's flash particles fx file in Content folder.
 	FString muzzle_flash_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_Launcher_MFNew.P_Launcher_MFNew'" };
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Actor.
+	friend class Gun_launcher_test;
 };

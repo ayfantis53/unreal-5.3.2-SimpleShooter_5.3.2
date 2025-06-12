@@ -11,7 +11,7 @@
 #include "AI/SS_Bt_service_seen_player.h"
 #include "Characters/SS_Shooter_character.h"
 
-// Unreal includes
+// Unreal headers.
 #include "AIController.h"
 #include "GameFramework/Pawn.h"
 #include "Kismet/GameplayStatics.h"

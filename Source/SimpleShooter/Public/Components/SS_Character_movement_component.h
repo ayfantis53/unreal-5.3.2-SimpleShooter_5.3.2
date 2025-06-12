@@ -16,7 +16,7 @@
 
 
 /**
- *	Movement component so character will move when we input our controls
+ *	Movement component so enemy character will move on nav mesh
  */
 UCLASS()
 class SIMPLESHOOTER_API USS_Character_movement_component : public UCharacterMovementComponent
@@ -26,4 +26,7 @@ class SIMPLESHOOTER_API USS_Character_movement_component : public UCharacterMove
 public:
 	/// @brief Sets default values for this character's properties.
 	USS_Character_movement_component();
+
+	/// @brief Getter for acceleration path since it protected in unreal code.
+	FORCEINLINE auto get_acceleration_path() const -> bool { return bUseAccelerationForPaths; } 
 };

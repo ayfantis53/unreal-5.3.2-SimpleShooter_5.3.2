@@ -11,7 +11,7 @@
 #include "AI/SS_Enemy_ai_controller.h"
 #include "Characters/SS_Shooter_character.h"
 
-// Unreal includes
+// Unreal headers.
 #include "Kismet/GameplayStatics.h"
 #include "BehaviorTree/BehaviorTree.h"
 #include "BehaviorTree/BlackboardComponent.h"

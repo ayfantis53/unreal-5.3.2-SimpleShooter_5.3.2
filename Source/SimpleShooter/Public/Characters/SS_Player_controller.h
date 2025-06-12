@@ -52,23 +52,26 @@ private:
 	/// @brief time to count down from before game restarts.
 	float restart_delay_{ 5.f };
 
-	/* ---------------------- GAME WIN ---------------------- */
+	/* ---------------------- WIDGETS ----------------------- */
 
-	//// WIDGETS ////
+	//// GAME WIN ////
 
 	/// @brief ptr to widget that holds the win game widget.
 	TSharedPtr<SWidget> win_game_widget_container_;
 
 	/// @brief Text widget that appears if character wins game.
 	TSharedPtr<SSS_Widget_win_screen> win_screen_ref_;
-
-	/* ---------------------- GAME LOSE ---------------------- */
 	
-	//// WIDGETS ////
+	//// GAME LOSE ////
 
 	/// @brief ptr to widget that holds the lose game widget.
 	TSharedPtr<SWidget> lose_game_widget_container_;
 
 	/// @brief Text widget that appears if character loses game.
 	TSharedPtr<SSS_Widget_lose_screen> lose_screen_ref_;
+
+	/* ----------------------- TESTING ---------------------- */
+
+	/// @brief Test classes to unit test this Controller.
+	friend class Player_controller_test;
 };

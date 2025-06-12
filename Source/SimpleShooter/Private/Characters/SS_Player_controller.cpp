@@ -12,7 +12,7 @@
 #include "UI/SS_Widget_win_screen.h"
 #include "UI/SS_Widget_lose_screen.h"
 
-// Unreal includes
+// Unreal headers.
 #include "SlateBasics.h"
 #include "Kismet/GameplayStatics.h"
 

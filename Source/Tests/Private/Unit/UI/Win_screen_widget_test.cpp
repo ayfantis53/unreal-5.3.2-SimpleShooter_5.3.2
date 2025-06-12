@@ -19,7 +19,6 @@ auto win_game_widget_spawn_test::RunTest(const FString& Parameters) -> bool
     //// INITIALIZE ////
     
     // Get viewport and Initialize widget.
-    UGameViewportClient* view_port                     = GEngine->GameViewport;
     TSharedPtr<class SSS_Widget_win_screen> widget_ref = SNew(SSS_Widget_win_screen);
 
     //// TEST ////

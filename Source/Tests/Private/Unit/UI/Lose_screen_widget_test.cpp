@@ -19,7 +19,6 @@ auto lose_game_widget_spawn_test::RunTest(const FString& Parameters) -> bool
     //// INITIALIZE ////
     
     // Get viewport and Initialize widget.
-    UGameViewportClient* view_port                      = GEngine->GameViewport;
     TSharedPtr<class SSS_Widget_lose_screen> widget_ref = SNew(SSS_Widget_lose_screen);
 
     //// TEST ////
@@ -50,7 +49,7 @@ auto lose_game_widget_text_test::RunTest(const FString& Parameters) -> bool
     FString count_down_text{ TEXT("Level will restart in 5 seconds...") };
 
     // Test text correct for Loss.
-    TestEqual("Losing text set correctly",  Lose_screen_widget_test::get_end_game_text(widget_ref), lose_text         );
+    TestEqual("Losing text set correctly",  Lose_screen_widget_test::get_end_game_text(widget_ref),    lose_text      );
     TestEqual("Restart text set correctly", Lose_screen_widget_test::get_resart_game_text(widget_ref), count_down_text);
 
     //// FINISH ////

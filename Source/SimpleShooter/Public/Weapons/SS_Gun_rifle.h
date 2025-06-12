@@ -60,4 +60,9 @@ private:
 	/// @brief path to rifle's impact particles fx file in Content folder.
 	//FString bullet_trail_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_SmokeTrail.P_SmokeTrail'" };
 	FString bullet_trail_path_{ "ParticleSystem'/Game/Weapons/FX/ParticleSystems/P_AssaultRifle_Trail.P_AssaultRifle_Trail'" };
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Actor.
+	friend class Gun_rifle_test;
 };

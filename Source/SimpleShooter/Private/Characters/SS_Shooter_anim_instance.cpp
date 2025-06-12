@@ -11,7 +11,7 @@
 #include "Characters/SS_Shooter_anim_instance.h"
 #include "Characters/SS_Shooter_character.h"
 
-// Unreal includes
+// Unreal headers.
 #include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/CharacterMovementComponent.h"
 

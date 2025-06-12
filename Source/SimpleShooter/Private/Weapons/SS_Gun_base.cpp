@@ -13,7 +13,7 @@
 #include "FX/SS_Camera_shake_launcher.h"
 #include "FX/SS_Camera_shake_weapon_fire.h"
 
-// Unreal includes
+// Unreal headers.
 #include "Engine/DamageEvents.h"
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"

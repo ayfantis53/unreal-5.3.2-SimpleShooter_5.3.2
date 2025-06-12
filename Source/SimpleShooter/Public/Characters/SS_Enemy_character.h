@@ -44,4 +44,7 @@ private:
 	FString enemy_mesh_path_{ "SkeletalMesh'/Game/AssetPacks/ParagonWraith/Characters/Heroes/Wraith/Skins/LunarOps/Meshes/Wraith_LunarOps.Wraith_LunarOps'" };
 
 	/* ----------------------- TESTING ---------------------- */
+
+	/// @brief Test classes to unit test this Character.
+	friend class Enemy_character_test;
 };

@@ -151,4 +151,13 @@ private:
 
 	/// @brief Character shoots a gun that spawn a grenade.
 	auto fire_projectile_weapon() -> void;
+
+	/* ----------------------- TESTING ---------------------- */
+	
+	/// @brief Test classes to unit test this Actor.
+	friend class Enemy_rifle_test;
+	friend class Gun_launcher_test;
+	friend class Gun_rifle_test;
+	friend class Gun_shotgun_test;
+	friend class Gun_sniper_test;
 };
